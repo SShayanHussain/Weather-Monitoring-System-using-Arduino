@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firmware Upload</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+                  url("{% static 'images/bg.jpg' %}") no-repeat center center/cover;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navbar {
+      width: 100%;
+      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding-right: 80px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ccc;
+    }
+
+    .form-container {
+      background: rgb(255 255 255 / 17%);
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;  
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #d1d1d1;
+    }
+
+    input[type="file"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button[type="submit"] {
+      background-color: #000000;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #3b5bdb;
+    }
+
+    .success,
+    .error {
+      margin-top: 15px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .success {
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">IoT Air Quality System</div>
+    <ul class="nav-links">
+      <li><a href="{% url 'dashboard' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About Us</a></li>
+      <li><a href="{% url 'live' %}">Live Data</Data></a></li>
+      
+    </ul>
+  </div>
+
+
+
+  <div class="form-container" id="formContainer">
+    <!-- Django Form -->
+    <form id="uploadForm" method="POST" enctype="multipart/form-data" action="{% url 'upload_firmware' %}">
+      {% csrf_token %}
+      <h2>Upload Firmware</h2>
+      <input type="file" name="file" required>
+      <input type="number" name="version" placeholder="Version (e.g., 1)" required>
+      <button type="submit">Submit</button>
+    </form>
+  
+    <!-- Hidden Success Message UI -->
+    <div id="uploadSuccess" style="display: none; text-align: center;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8a8 8 0 1 1-16 0A8 8 0 0 1 16 8zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.44 6.03 7.97a.75.75 0 1 0-1.06 1.06l2 2z"/>
+      </svg>
+      <h3 style="color: green; margin-top: 15px;">File uploaded successfully!</h3>
+      <a href="{% url 'dashboard' %}">
+        <button style="margin-top: 15px; padding: 10px 20px; font-size: 16px; border: none; background-color: #4CAF50; color: white; border-radius: 6px; cursor: pointer;">
+          Go to Home
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+  
+      const form = e.target;
+      const formData = new FormData(form);
+  
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          document.getElementById('uploadForm').style.display = 'none';
+          document.getElementById('uploadSuccess').style.display = 'block';
+        } else {
+          alert('Upload failed. Try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong!');
+      });
+    });
+  </script>
+</body>
+</html>

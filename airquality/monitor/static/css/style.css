@@ -1,0 +1,272 @@
+/* Base Styling */
+html, body {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+              url("../images/bg.jpg") no-repeat center center/cover;
+  background-size: cover;
+}
+
+/* Navbar Styling */
+.navbar {
+  width: 100%;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  padding-right: 80px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ccc;
+}
+
+/* Layout */
+.weather-app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  height: auto;
+  min-height: 100vh;
+  padding: 120px 40px 50px;
+  box-sizing: border-box;
+}
+
+.weather-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Weather Left Section */
+.temperature {
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.location {
+  font-size: 36px;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.date {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #ddd;
+}
+
+.description {
+  margin-top: 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+/* Weather Right Section */
+.weather-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.weather-details {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 30px 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  backdrop-filter: blur(10px);
+}
+
+.weather-details h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.weather-details p {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #f0f0f0;
+}
+
+.weather-details span {
+  font-weight: bold;
+}
+
+/* Condition Box */
+#condition-box {
+  transition: background-color 0.5s ease;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: rgba(0, 128, 0, 0.7); /* Default Green */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+/* About Page Specific */
+.about-content {
+  max-width: 900px;
+  margin: 130px auto 50px;
+  padding: 30px 40px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* ------------------- Responsive Styling ------------------- */
+
+/* Tablets (width 768px and below) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    gap: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-links li a {
+    font-size: 14px;
+  }
+
+  .weather-app {
+    flex-direction: column;
+    padding: 100px 20px 40px;
+    gap: 30px;
+  }
+
+  .temperature {
+    font-size: 60px;
+  }
+
+  .location {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .weather-details {
+    padding: 25px 40px;
+  }
+
+  .weather-details h3 {
+    font-size: 24px;
+  }
+
+  .weather-details p {
+    font-size: 18px;
+  }
+
+  .about-content {
+    margin: 120px 20px 40px;
+    padding: 20px;
+    font-size: 16px;
+  }
+}
+
+/* Mobiles (width 480px and below) */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    padding-top: 10px;
+  }
+
+  .weather-app {
+    padding: 90px 15px 30px;
+  }
+
+  .temperature {
+    font-size: 50px;
+  }
+
+  .location {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .weather-details {
+    padding: 20px 30px;
+  }
+
+  .weather-details h3 {
+    font-size: 22px;
+  }
+
+  .weather-details p {
+    font-size: 16px;
+  }
+
+  .about-content {
+    margin: 110px 15px 30px;
+    padding: 15px;
+    font-size: 15px;
+  }
+}

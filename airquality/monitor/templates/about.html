@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - IoT Air Quality System</title>
+
+  <link rel="stylesheet" href="{% static 'css\style.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">IoT Air Quality System</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{% url 'dashboard' %}">Home</a></li>
+        
+        <li><a href="{% url 'live' %}">Live Data</a></li>
+        <li><a href="{% url 'upload' %}">Upload</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="weather-app" style="flex-direction: column; align-items: center; text-align: center; margin-bottom: 100px;">
+
+    <!-- Project Overview -->
+    <section style="max-width: 900px; margin-top: 100px;">
+      <h2 style="font-size: 36px; margin-bottom: 20px; color: hsl(0deg 4.25% 55.75%)">Project Overview</h2>
+      <p style="font-size: 20px; line-height: 1.6; color: #eee;">
+        Our IoT-based Weather and Air Quality Monitoring System provides real-time environmental insights.
+        It uses an ESP32 microcontroller combined with DHT11 and MQ135 sensors to track temperature, humidity, and air quality.
+        The system is designed to help users stay informed about pollution levels.
+        Data is displayed on a visually appealing dashboard created using HTML, CSS, and JavaScript.
+        This project is ideal for personal health monitoring, education, and smart city applications.
+      </p>
+    </section>
+
+    <!-- Components -->
+    <section style="max-width: 1200px; margin-top: 60px;">
+      <h2 style="font-size: 36px; margin-bottom: 30px; color: hsl(0deg 4.25% 55.75%)">Components Used</h2>
+      <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: nowrap; overflow-x: auto;">
+        
+        <!-- ESP32 -->
+        <div class="weather-details" style="width: 250px; flex-shrink: 0;">
+          <div class="image-wrapper" style="height: 180px; width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 10px;">
+            <img src="{% static 'images\esp32.jpg' %}" alt="ESP32" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+          </div>
+          <h3 style="font-size: 20px; color: black;">ESP32</h3>
+          <p style="font-size: 15px; line-height: 1.5; color: black;">
+            A powerful Wi-Fi-enabled microcontroller that forms the heart of the project.
+          </p>
+        </div>
+
+        <!-- DHT11 -->
+        <div class="weather-details" style="width: 250px; flex-shrink: 0;">
+          <div class="image-wrapper" style="height: 180px; width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 10px;">
+            <img src="{% static 'images\images (1).jpeg' %}" alt="DHT11 Sensor" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+          </div>
+          <h3 style="font-size: 20px; color: black;">DHT11</h3>
+          <p style="font-size: 15px; line-height: 1.5; color: black;">
+            A temperature and humidity sensor used to monitor basic environmental data.
+          </p>
+        </div>
+
+        <!-- MQ135 -->
+        <div class="weather-details" style="width: 250px; flex-shrink: 0;">
+          <div class="image-wrapper" style="height: 180px; width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 10px;">
+            <img src="{% static 'images\images.jpeg' %}" alt="MQ135 Sensor" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+          </div>
+          <h3 style="font-size: 20px; color: black;">MQ135</h3>
+          <p style="font-size: 15px; line-height: 1.5; color: black;">
+            This air quality sensor detects and monitors the level of harmful gases in the environment.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Meet the Developers -->
+    <section style="margin-top: 60px;">
+      <h2 style="font-size: 36px; margin-bottom: 30px; color: hsl(0deg 4.25% 55.75%)">Meet the Developers</h2>
+      <div style="display: flex; gap: 60px; justify-content: center; flex-wrap: wrap;">
+
+        <!-- Abdul Moiz -->
+        <div class="weather-details" style="width: 250px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <div class="image-wrapper" style="height: 220px; width: 100%; display: flex; justify-content: center; border-radius: 15px; margin-bottom: 10px;">
+            <img src="{% static 'images\moiz.jpg' %}" alt="Abdul Moiz" style="width: 80%; height: 100%; object-fit: cover; border-radius: 20px;">
+          </div>
+          <h3 style="color: black; font-size: 28px; margin: 0;">Abdul Moiz</h3>
+          <p style="font-size: 18px; color: #d9c7c7; margin: 5px 0;">
+            <i class="fab fa-html5"></i> Frontend Developer
+          </p>
+          <p style="font-size: 16px; line-height: 1.6; color: black;">
+            Abdul Moiz designed and built the visual interface using HTML, CSS, and JavaScript,
+            focusing on responsive, clean, and modern UI design.
+          </p>
+        </div>
+
+        <!-- Shayan Hussain -->
+        <div class="weather-details" style="width: 250px; display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <div class="image-wrapper" style="height: 220px; width: 100%; display: flex; justify-content: center; border-radius: 15px; margin-bottom: 10px;">
+            <img src="{% static 'images\shayan.jpg' %}" alt="Shayan Hussain" style="width: 80%; height: 100%; object-fit: cover; border-radius: 20px;">
+          </div>
+          <h3 style="color: black; font-size: 28px; margin: 0;">Shayan Hussain</h3>
+          <p style="font-size: 18px; color: #d9c7c7; margin: 5px 0;">
+            <i class="fas fa-database"></i> Backend Developer
+          </p>
+          <p style="font-size: 16px; line-height: 1.6; color: black;">
+            Shayan Hussain developed backend services and hardware integration using ESP32 and sensors,
+            ensuring real-time data flow and seamless cloud integration.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
